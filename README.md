@@ -3,8 +3,6 @@
 Welcome to my Expression Evaluator!
 
 ## Table of Contents
-- [Arithmetic Expression Evaluator](#arithmetic-expression-evaluator)
-  - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
   - [App File Structure](#app-file-structure)
   - [Features](#features)
