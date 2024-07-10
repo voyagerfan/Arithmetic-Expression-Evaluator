@@ -13,88 +13,112 @@
  * entering 0 for mathExpression will terminate the program.
  * 
  */
-
-
+package main.java;
 
 import java.util.*;
 
 
 public class MyExpressionTest {
 
+	// variable and data structure creation
 	static String mathExpression;
 	static Scanner input = new Scanner(System.in);
 	static HashMap<Integer, String> errorMessage = new HashMap<>();
-	
-	//initiates boolean run to true.
-	static boolean run = true; 
 	
 	
 	
 	public static void main(String[] args) 
 	{
-		
+		// load error messages key-value pairs into hash map
 		LoadErrorMessage();
+		
 		boolean error = false;
-		//executes statements in while loop until run = false
-		while (run)
+		
+		// loop indefinitely
+		while (true)
 		{
-			System.out.println("\nEnter a math expression: ");
+			// user prompt
+			System.out.println("\nEnter a math expression or 0 to exit: ");
 			mathExpression = input.nextLine();
 			
+			// exit command
 			if(mathExpression.equals("0"))
 			{
-				System.out.println("Bye!");
-				run = false;
+				System.out.println("Thanks for stopping by, come back soon!");
 				break; 
 				
 			}
 			else
 			
 			{
-				//creates object ee of Expression evaluation class.
+				// create an ExpressionEvaluation object named 'ee'.
 				ExpressionEvaluation ee = new ExpressionEvaluation();
 				
-				/* passes mathExpression to expressionEvaluation and yield boolean true or false
-				 * will boolean error will either send error if found or if no error found, continue
-				 * to next if statement
-				 */
+				// check user input for errors  
 				error = ee.expressionEvaluation(mathExpression);
 				
 
 			}
-			//if no error found, execute statements
+			// if no error found perform postfix conversion and evaluation
 			if(!error)
 			{
-				/* creates an object of InfixToPostfix
-				 * sends expression
-				 * receives postfix 
-				 */
 				
+				// create an InfixToPostfix object named "i2p"
 				InfixToPostfix i2p = new InfixToPostfix();
+				
+				// create the postfix string with the user input
 				String postfix = i2p.infix2postfix(mathExpression);
 				
-				 /* creates an object of PostfixEvaluation
-				 * sends postfix 
-				 * receives the result
-				 */
+				// create a PostfixEvaluation object name "pe"
 				PostfixEvaluation pe = new PostfixEvaluation();
+				
+				// calculate the expression result from the postfix string
 				int result = pe.postfixEvaluation(postfix);
 				
-				//prints results
+				// prints results
 				System.out.println("infix: " + mathExpression);
-				System.out.println("postfix: " + postfix);
+				System.out.println("postfix: " + printable_postfix(postfix));
 				System.out.println("result: " + result);
 			}
 			
 		}
 
 	}
-	
+	/**
+	 * load error messages key-value pairs into hash map
+	 *
+	 * @param N/A
+	 * @return N/A
+	 */
 	public static void LoadErrorMessage()
 	{
 		errorMessage.put(1, "} expected");
 		errorMessage.put(2, ") expected");
 		errorMessage.put(3, "Incomplete Expression");
+	}
+	
+	/**
+	 * Removes spaces from the postfix string for printing.
+	 *
+	 * @param input = postfix string with spaces.
+	 * @return a postfix string without spaces.
+	 */
+	public static String printable_postfix(String input) {
+		
+		// initialize a string
+		String output = "";
+		
+		// iterate through the string
+		for(int i=0; i<input.length(); i++){
+			
+			// if not blank, concatenate chars
+			if(input.charAt(i) !=' ') {
+				
+				output += input.charAt(i);
+			}
+		}
+		
+		return output;
 	}
 	
 }
