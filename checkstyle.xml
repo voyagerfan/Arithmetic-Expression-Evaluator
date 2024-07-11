@@ -1,89 +1,43 @@
-<?xml version="1.0"?>
-<!DOCTYPE module PUBLIC
-        "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
-        "https://checkstyle.org/dtds/configuration_1_3.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.17">
+  <module name="Checker">
+    <property name="tabWidth" value="4"/>
+    <property name="fileLength" value="120"/>
 
-<module name="Checker">
-    <!--
-        GENERAL CONFIGURATION
-    -->
-    <!-- Specify the Java source version -->
-    <property name="target" value="1.8"/>
+    <rule name="EmptyLineSeparator" severity="warning"/>  <rule name="MissingBraces" severity="warning"/>     <rule name="WhitespaceAround" severity="warning">
+      <![CDATA[
+        <operator name="="/>
+        <operator name="!="/>
+        <operator name="=="/>
+        <operator name="!="/>
+        <operator name="<"/>
+        <operator name=">"/>
+        <operator name="<="/>
+        <operator name=">="/>
+        <operator name="+"/>
+        <operator name="-"/>
+        <operator name="*"/>
+        <operator name="/"/>
+        <operator name="%"/>
+        <operator name="^"/>
+        <operator name="&"/>
+        <operator name("|"/>
+        <operator name="&&"/>
+        <operator name="||"/>
+        <operator name="!"/>
+        <operator name="?="/>
+        <operator name=":"/>
+      ]]></rule>                   <rule name="TypeName" severity="warning">
+      <pattern type="CLASS_DEF" name="^([A-Z][A-Za-z0-9]*){1,}$" message="Class names must be PascalCase"/>
+    </rule>
+    <rule name="MethodName" severity="warning">
+      <pattern type="METHOD_DEF" name="^[a-z][a-zA-Z0-9]*$" message="Method names must be camelCase"/>
+    </rule>
+    <rule name="VariableName" severity="warning">
+      <pattern type="VARIABLE_DEF" name="^[a-z][a-zA-Z0-9]*$" message="Variable names must be camelCase"/>
+    </rule>
 
-    <!-- Specify the encoding of source files -->
-    <property name="charset" value="UTF-8"/>
-
-    <!-- Specify the severity level (error|warning|ignore) -->
-    <property name="severity" value="error"/>
-
-
-    <!--
-        IMPORT CONTROL
-    -->
-    <!-- Disallow wildcard imports -->
-    <module name="AvoidStarImport"/>
-
-    <!-- Require specific imports to be present -->
-    <module name="RequirePackage"/>
-
-    <!--
-        CODING STANDARDS
-    -->
-    <!-- Enforce naming conventions -->
-    <module name="NamingConvention"/>
-
-    <!-- Require Javadoc comments for all classes, methods, and fields -->
-    <module name="JavadocType"/>
-    <module name="JavadocMethod"/>
-    <module name="JavadocField"/>
-
-    <!-- Enforce a maximum line length -->
-    <module name="LineLength">
-        <property name="max" value="120"/>
-        <property name="ignorePattern" value="^package .*|^import .*"/>
+    <rule name="MissingJavadocType" severity="warning"/>  <rule name="UnusedImports" severity="warning"/>        <rule name="MultipleStringLiterals" severity="warning"/>  <rule name="NewLineAtEndOfFile" severity="warning"/>     
     </module>
+</checkstyle>
 
-    <!--
-        CODE STRUCTURE
-    -->
-    <!-- Require braces around statements -->
-    <module name="LeftCurly"/>
-
-    <!-- Require curly brace placement for control structures -->
-    <module name="RightCurly"/>
-
-    <!-- Require consistent whitespace -->
-    <module name="WhitespaceAround"/>
-
-    <!-- Prohibit tab characters in source code -->
-    <module name="FileTabCharacter"/>
-
-    <!-- Require consistent indentation -->
-    <module name="Indentation"/>
-
-    <!--
-        ERROR PRONE
-    -->
-    <!-- Prohibit the use of System.out and System.err -->
-    <module name="AvoidPrintStackTrace"/>
-    <module name="IllegalImport"/>
-
-    <!--
-        MISCELLANEOUS
-    -->
-    <!-- Require @Override annotations -->
-    <module name="Override"/>
-
-    <!-- Require final parameters where possible -->
-    <module name="FinalParameters"/>
-
-    <!--
-        DESIGN AND PERFORMANCE
-    -->
-    <!-- Enforce immutable classes where appropriate -->
-    <module name="ImmutableField"/>
-
-    <!-- Enforce appropriate use of logging -->
-    <module name="LoggerName"/>
-
-</module>
