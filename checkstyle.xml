@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+        "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+        "https://checkstyle.org/dtds/configuration_1_3.dtd">
+
+<module name="Checker">
+    <!--
+        GENERAL CONFIGURATION
+    -->
+    <!-- Specify the Java source version -->
+    <property name="target" value="1.8"/>
+
+    <!-- Specify the encoding of source files -->
+    <property name="charset" value="UTF-8"/>
+
+    <!-- Specify the severity level (error|warning|ignore) -->
+    <property name="severity" value="error"/>
+
+    <!-- Specify the reporting format (plain|xml) -->
+    <property name="format" value="plain"/>
+
+    <!--
+        IMPORT CONTROL
+    -->
+    <!-- Disallow wildcard imports -->
+    <module name="AvoidStarImport"/>
+
+    <!-- Require specific imports to be present -->
+    <module name="RequirePackage"/>
+
+    <!--
+        CODING STANDARDS
+    -->
+    <!-- Enforce naming conventions -->
+    <module name="NamingConvention"/>
+
+    <!-- Require Javadoc comments for all classes, methods, and fields -->
+    <module name="JavadocType"/>
+    <module name="JavadocMethod"/>
+    <module name="JavadocField"/>
+
+    <!-- Enforce a maximum line length -->
+    <module name="LineLength">
+        <property name="max" value="120"/>
+        <property name="ignorePattern" value="^package .*|^import .*"/>
+    </module>
+
+    <!--
+        CODE STRUCTURE
+    -->
+    <!-- Require braces around statements -->
+    <module name="LeftCurly"/>
+
+    <!-- Require curly brace placement for control structures -->
+    <module name="RightCurly"/>
+
+    <!-- Require consistent whitespace -->
+    <module name="WhitespaceAround"/>
+
+    <!-- Prohibit tab characters in source code -->
+    <module name="FileTabCharacter"/>
+
+    <!-- Require consistent indentation -->
+    <module name="Indentation"/>
+
+    <!--
+        ERROR PRONE
+    -->
+    <!-- Prohibit the use of System.out and System.err -->
+    <module name="AvoidPrintStackTrace"/>
+    <module name="IllegalImport"/>
+
+    <!--
+        MISCELLANEOUS
+    -->
+    <!-- Require @Override annotations -->
+    <module name="Override"/>
+
+    <!-- Require final parameters where possible -->
+    <module name="FinalParameters"/>
+
+    <!--
+        DESIGN AND PERFORMANCE
+    -->
+    <!-- Enforce immutable classes where appropriate -->
+    <module name="ImmutableField"/>
+
+    <!-- Enforce appropriate use of logging -->
+    <module name="LoggerName"/>
+
+</module>
