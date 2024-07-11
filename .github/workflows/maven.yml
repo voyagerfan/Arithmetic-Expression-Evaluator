@@ -30,4 +30,18 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
+    # run checkstyle linter
+    - name: Summarize Checkstyle Report
+      run: checkstyle-violations-summary target/checkstyle.xml
+
+    # Capture the summary output and format for display
+    - name: Display Checkstyle Violations
+      run: |
+        violations=$(cat checkstyle-summary.txt | grep -Eo '[0-9]+')  # Extract number of violations
+        if [[ $violations -gt 0 ]]; then
+          echo "**Found $violations Checkstyle violations! Please address them before merging.**"
+          exit 1  # Fail the build if there are violations
+        fi
+        echo "Checkstyle reports no violations. Code looks good!"
+
     
