@@ -34,7 +34,7 @@ jobs:
 
     - name: Parse Checkstyle Report (Checkstyle Ant Task - Console Output)
       run: |
-        java -jar checkstyle-10.17.0-all.jar -f net.sf.checkstyle.ant.antTask.ReportFormat -c checkstyle.xml
+        java -jar checkstyle-10.17.0-all.jar -f XML -c checkstyle.xml
 
 
 
