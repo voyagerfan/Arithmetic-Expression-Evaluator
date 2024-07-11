@@ -30,7 +30,7 @@ jobs:
 
     # Checkstyle Ant Task parser
     - name: Download Checkstyle JAR
-      run: wget https://sourceforge.net/projects/checkstyle/files/checkstyle/8.17/CheckStyle-all-8.17-all.jar
+      run: wget https://sourceforge.net/projects/checkstyle.mirror/files/latest/download
 
     - name: Parse Checkstyle Report (Checkstyle Ant Task - Console Output)
       run: |
