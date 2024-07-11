@@ -16,8 +16,6 @@
     <!-- Specify the severity level (error|warning|ignore) -->
     <property name="severity" value="error"/>
 
-    <!-- Specify the reporting format (plain|xml) -->
-    <property name="format" value="plain"/>
 
     <!--
         IMPORT CONTROL
