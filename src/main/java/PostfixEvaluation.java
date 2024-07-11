@@ -6,7 +6,7 @@ import java.util.*;
  * This class represents the final evaluation of the user input by converting
  * the postfix string to an integer result.
  */
-public class PostfixEvaluation 
+public class PostfixEvaluation
 {
 	/**
 	 * This method evaluates a postfix string and returns a numerical result.
