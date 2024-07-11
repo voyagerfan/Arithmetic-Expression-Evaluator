@@ -16,9 +16,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 22
@@ -29,14 +27,14 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-      
+
     # install or use cache version of csx2html 
     - uses: actions/cache@v3
-    with:
-      path: ~/.apt/cache  
-      key: ${{ runner.os }}-csx2html-${{ hashFiles('**/pom.xml') }}
-      restore-keys: |
-        ${{ runner.os }}-csx2html-
+      with:
+        path: ~/.apt/cache  
+        key: ${{ runner.os }}-csx2html-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-csx2html-
     - name: Install csx2html (if not cached)
       run: sudo apt-get update && sudo apt-get install csx2html -y
     - name: Parse Checkstyle Report with csx2html
