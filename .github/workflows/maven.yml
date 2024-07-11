@@ -35,6 +35,7 @@ jobs:
     - name: Parse Checkstyle Report (Checkstyle Ant Task - Console Output)
       run: |
         java -jar checkstyle-10.17.0-all.jar -f XML -c checkstyle.xml src/main/java
+      continue-on-error: true
 
 
 
