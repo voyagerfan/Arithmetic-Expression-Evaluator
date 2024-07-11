@@ -39,7 +39,7 @@ The following is a brief overview of the file structure
 The program includes the following features:
 
 * Simplistic architecture.
-* JUnit testing suite
+* JUnit testing suite.
 * Supports operators "+", "-", "*" and "/"
 * User input validation for correct number of open/closing parenthesis.
 * Informs a user of the position of a missing parenthesis.
