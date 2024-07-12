@@ -1,102 +1,75 @@
-/* 
- * Program description:
- * The program requests a math expression from the user. The user
- * enters the math expression which is stored in a string variable
- * and passed to the expressionEvalation method. expressionEvaluation
- * iterates over the string variable and evaluates each char
- * against conditional if-statements which if met, will assign a boolean
- * "error" to true or false. If true, an error message is printed and the 
- * while loop main re-starts. If there is no error, mathExpression is passed 
- * to InfixtoPostfix and converts it to postfix. The postfix is then passed to
- * postfixEvaluation which computes the value of the expression.
- * 
- * entering 0 for mathExpression will terminate the program.
- * 
- */
 package main.java;
 
-import java.util.*;
+import java.util.Scanner;
 
-
+/**
+ * This class contains the main entry point of the program.
+ * The user is prompted for input which is then evaluated for
+ * error. If no expression errors are found, the infix
+ * expression is converted to postfix and evaluated.
+ */
 public class MyExpressionTest {
 
-	// variable and data structure creation
+	/**
+	 * Variable for user input.
+	 */
 	static String mathExpression;
+	/**
+	 * scanner object to collect keyboard input.
+	 */
 	static Scanner input = new Scanner(System.in);
-	static HashMap<Integer, String> errorMessage = new HashMap<>();
-	
-	
-	
-	public static void main(String[] args) 
-	{
-		// load error messages key-value pairs into hash map
-		LoadErrorMessage();
-		
-		boolean error = false;
-		
-		// loop indefinitely
-		while (true)
-		{
-			// user prompt
-			System.out.println("\nEnter a math expression or 0 to exit: ");
-			mathExpression = input.nextLine();
-			
-			// exit command
-			if(mathExpression.equals("0"))
-			{
-				System.out.println("Thanks for stopping by, come back soon!");
-				break; 
-				
-			}
-			else
-			
-			{
-				// create an ExpressionEvaluation object named 'ee'.
-				ExpressionEvaluation ee = new ExpressionEvaluation();
-				
-				// check user input for errors  
-				error = ee.expressionEvaluation(mathExpression);
-				
 
+
+	public static void main(String[] args) {
+		boolean error = false;
+
+		// instantiate classes
+		ExpressionEvaluation ee = new ExpressionEvaluation();
+		InfixToPostfix i2p = new InfixToPostfix();
+		PostfixEvaluation pe = new PostfixEvaluation();
+
+		// loop indefinitely
+		while (true) {
+
+			// user prompt
+			System.out.println("\nEnter a math "
+					+ "expression or 0 to exit: ");
+
+			// user input
+			mathExpression = input.nextLine();
+
+			// exit command
+			if (mathExpression.equals("0")) {
+
+				System.out.println("Thanks for stopping by, "
+						+ "come back soon!");
+				break;
+
+			} else {
+
+				// check user input for errors
+				error = ee.expressionEvaluation(mathExpression);
 			}
-			// if no error found perform postfix conversion and evaluation
-			if(!error)
-			{
-				
-				// create an InfixToPostfix object named "i2p"
-				InfixToPostfix i2p = new InfixToPostfix();
-				
+			// if no error, convert and evaluate
+			 if (!error) {
+
 				// create the postfix string with the user input
 				String postfix = i2p.infix2postfix(mathExpression);
-				
-				// create a PostfixEvaluation object name "pe"
-				PostfixEvaluation pe = new PostfixEvaluation();
-				
-				// calculate the expression result from the postfix string
+
+				// evaluate the result
 				int result = pe.postfixEvaluation(postfix);
-				
+
 				// prints results
 				System.out.println("infix: " + mathExpression);
-				System.out.println("postfix: " + printable_postfix(postfix));
+
+				System.out.println("postfix: "
+				+ printable_postfix(postfix));
+
 				System.out.println("result: " + result);
 			}
-			
 		}
+	}
 
-	}
-	/**
-	 * load error messages key-value pairs into hash map
-	 *
-	 * @param N/A
-	 * @return N/A
-	 */
-	public static void LoadErrorMessage()
-	{
-		errorMessage.put(1, "} expected");
-		errorMessage.put(2, ") expected");
-		errorMessage.put(3, "Incomplete Expression");
-	}
-	
 	/**
 	 * Removes spaces from the postfix string for printing.
 	 *
@@ -104,21 +77,20 @@ public class MyExpressionTest {
 	 * @return a postfix string without spaces.
 	 */
 	public static String printable_postfix(String input) {
-		
+
 		// initialize a string
 		String output = "";
-		
+
 		// iterate through the string
-		for(int i=0; i<input.length(); i++){
-			
+		for (int i = 0; i < input.length(); i++) {
+
 			// if not blank, concatenate chars
-			if(input.charAt(i) !=' ') {
-				
+			if (input.charAt(i) != ' ') {
+
 				output += input.charAt(i);
 			}
 		}
-		
+
 		return output;
 	}
-	
 }

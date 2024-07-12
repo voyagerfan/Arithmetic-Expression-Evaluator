@@ -1,6 +1,6 @@
 package test.java;
 
-import org.junit.jupiter.api.BeforeAll; 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -9,7 +9,13 @@ import main.java.PostfixEvaluation;
 
 public class TestExpressions {
 
+	/*
+	 * The infix to postfix converter.
+	 */
     private static InfixToPostfix postfix_converter;
+    /*
+	 * The postfix expression evaluator.
+	 */
     private static PostfixEvaluation eval_converter;
 
     @BeforeAll
@@ -17,10 +23,10 @@ public class TestExpressions {
         postfix_converter = new InfixToPostfix();
         eval_converter = new PostfixEvaluation();
     }
-    
+
     /**
-     * Tests the addition of 2+2
-     * @param 2+2
+     *
+     * Tests the addition of 2+2.
      */
     @Test
     public void test1_simpleAddition() {
@@ -29,8 +35,7 @@ public class TestExpressions {
         assertEquals(4, final_val);
     }
     /**
-     * Tests the subtraction of 10-5
-     * @param "10-5"
+     * Tests the subtraction of 10-5.
      */
     @Test
     public void test2_simpleSubtraction() {
@@ -38,10 +43,9 @@ public class TestExpressions {
         int final_val = eval_converter.postfixEvaluation(postfix_val);
         assertEquals(5, final_val);
     }
-    
+
     /**
-     * Tests the multiplication of 8 x 4
-     * @param "8*4"
+     * Tests the multiplication of 8 x 4.
      */
     @Test
     public void test3_simpleMultiplication() {
@@ -49,10 +53,9 @@ public class TestExpressions {
         int final_val = eval_converter.postfixEvaluation(postfix_val);
         assertEquals(32, final_val);
     }
-    
+
     /**
-     * Tests the multiplication of 8 x 4
-     * @param "55/11"
+     * Tests the multiplication of 8 x 4.
      */
     @Test
     public void test4_simpleDivision() {
@@ -60,10 +63,9 @@ public class TestExpressions {
         int final_val = eval_converter.postfixEvaluation(postfix_val);
         assertEquals(5, final_val);
     }
-    
+
     /**
-     * Tests the addition of 2+2 with brackets
-     * @param "(2+2)"
+     * Tests the addition of 2+2 with brackets.
      */
     @Test
     public void test5_addwithbrackets() {
@@ -72,8 +74,7 @@ public class TestExpressions {
         assertEquals(4, final_val);
     }
     /**
-     * Tests the addition of 2+2 with brackets and spaces
-     * @param "(2+2)"
+     * Tests the addition of 2+2 with brackets and spaces.
      */
     @Test
     public void test6_addwithbrackets_spaces() {
@@ -81,10 +82,9 @@ public class TestExpressions {
         int final_val = eval_converter.postfixEvaluation(postfix_val);
         assertEquals(4, final_val);
     }
-    
+
     /**
-     * Tests the subtraction of 20-10 with brackets
-     * @param "(20-10)"
+     * Tests the subtraction of 20-10 with brackets.
      */
     @Test
     public void test7_subractwithbrackets() {
@@ -93,8 +93,7 @@ public class TestExpressions {
         assertEquals(10, final_val);
     }
     /**
-     * Tests the subtraction of 20-10 with brackets and spaces
-     * @param "(20 - 10)"
+     * Tests the subtraction of 20-10 with brackets and spaces.
      */
     @Test
     public void test8_subractwithbrackets_spaces() {
@@ -104,8 +103,7 @@ public class TestExpressions {
     }
     
     /**
-     * Tests the multiplication of 5*4 with brackets
-     * @param "(5*4)"
+     * Tests the multiplication of 5*4 with brackets.
      */
     @Test
     public void test9_multiplcationwithbrackets() {
@@ -114,8 +112,7 @@ public class TestExpressions {
         assertEquals(20, final_val);
     }
     /**
-     * Tests the multiplication of 5*4 with brackets and spaces
-     * @param "(5 - 4)"
+     * Tests the multiplication of 5*4 with brackets and spaces.
      */
     @Test
     public void test10_subractwithbrackets_spaces() {
@@ -123,10 +120,9 @@ public class TestExpressions {
         int final_val = eval_converter.postfixEvaluation(postfix_val);
         assertEquals(20, final_val);
     }
-    
+
     /**
-     * Tests multiple operator expression w/ parenthesis
-     * @param "(4+5)+(9+3)"
+     * Tests multiple operator expression w/ parenthesis.
      */
     @Test
     public void test11() {
@@ -136,8 +132,7 @@ public class TestExpressions {
     }
     
     /**
-     * Tests multiple operator expression w/ parenthesis
-     * @param "(9+3)-(4+5)"
+     * Tests multiple operator expression w/ parenthesis.
      */
     @Test
     public void test12() {
@@ -145,10 +140,9 @@ public class TestExpressions {
         int final_val = eval_converter.postfixEvaluation(postfix_val);
         assertEquals(3, final_val);
     }
-    
+
     /**
-     * Tests multiple operator expression w/ parenthesis
-     * @param "(9+3)*(4+5)"
+     * Tests multiple operator expression w/ parenthesis.
      */
     @Test
     public void test13() {
@@ -156,10 +150,9 @@ public class TestExpressions {
         int final_val = eval_converter.postfixEvaluation(postfix_val);
         assertEquals(108, final_val);
     }
-    
+
     /**
-     * Tests multiple operator expression w/ parenthesis
-     * @param "(9+3)/(3+0)"
+     * Tests multiple operator expression w/ parenthesis.
      */
     @Test
     public void test14() {
@@ -167,10 +160,9 @@ public class TestExpressions {
         int final_val = eval_converter.postfixEvaluation(postfix_val);
         assertEquals(4, final_val);
     }
-    
+
     /**
-     * Tests multiple operator expression w/ parenthesis
-     * @param "(9/3)+(4*5)"
+     * Tests multiple operator expression w/ parenthesis.
      */
     @Test
     public void test15() {
@@ -178,10 +170,9 @@ public class TestExpressions {
         int final_val = eval_converter.postfixEvaluation(postfix_val);
         assertEquals(23, final_val);
     }
-    
+
     /**
-     * Tests multiple operator expression w/ parenthesis
-     * @param "(9/3)+(5-1)"
+     * Tests multiple operator expression w/ parenthesis.
      */
     @Test
     public void test16() {
@@ -189,10 +180,9 @@ public class TestExpressions {
         int final_val = eval_converter.postfixEvaluation(postfix_val);
         assertEquals(7, final_val);
     }
-    
+
     /**
-     * Test precedence
-     * @param "8*2+1-3*4/2"
+     * Test precedence.
      */
     @Test
     public void test17() {
@@ -200,10 +190,9 @@ public class TestExpressions {
         int final_val = eval_converter.postfixEvaluation(postfix_val);
         assertEquals(11, final_val);
     }
-    
+
     /**
-     * Test precedence with spaces
-     * @param "8*2+1-3*4/2"
+     * Test precedence with spaces.
      */
     @Test
     public void test18() {
@@ -211,5 +200,5 @@ public class TestExpressions {
         int final_val = eval_converter.postfixEvaluation(postfix_val);
         assertEquals(11, final_val);
     }
-    
+
 }
